@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 
+//Added comments in newly created branch devops-working
 @RestController
 class BookCategoryController {
     @Autowired
@@ -26,7 +27,7 @@ class BookCategoryController {
             return ResponseEntity.status(e.status).body(BookCategoryResponse("failed", e.message.toString()))
         }
         catch (e: Exception) {
-            return ResponseEntity.status(500).body(BookCategoryResponse("failed", "Failed to add book category"))
+            return ResponseEntity.status(502).body(BookCategoryResponse("failed", "Failed to add book category"))
         }
     }
     @GetMapping("/book/categories")
@@ -39,7 +40,8 @@ class BookCategoryController {
             return ResponseEntity.status(e.status).body(BookCategoriesResponse("failed", e.message.toString(), null))
         }
         catch (e: Exception) {
-            return ResponseEntity.status(500).body(BookCategoriesResponse("failed", "Failed to get book categories", null))
+            return ResponseEntity.status(500).body(BookCategoriesResponse("failed", "Error while fetching all book's 
+categories", null))
         }
     }
 }
